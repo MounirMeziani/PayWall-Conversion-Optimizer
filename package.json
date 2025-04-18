@@ -1,0 +1,24 @@
+{
+  "name": "paywall-conversion-in-a-box",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dynamic, A/B-tested paywall system for SaaS founders",
+  "scripts": {
+    "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint"
+  },
+  "keywords": [
+    "paywall",
+    "saas",
+    "conversion",
+    "a/b testing"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.11.0"
+} 

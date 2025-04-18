@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 17, 24, 39;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* Paywall content blur effect */
+.blur-content {
+  filter: blur(5px);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Animation for revenue notifications */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Waterfall chart styling */
+.waterfall-bar {
+  transition: height 1s ease-in-out;
+}
+
+.waterfall-positive {
+  background: linear-gradient(to top, #10B981, #34D399);
+}
+
+.waterfall-negative {
+  background: linear-gradient(to bottom, #EF4444, #F87171);
+}
+
+.waterfall-total {
+  background: linear-gradient(to top, #3B82F6, #60A5FA);
+} 

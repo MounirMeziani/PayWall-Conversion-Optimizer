@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// User model
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  events    Event[]
+}
+
+// Event model for tracking impressions and conversions
+model Event {
+  id        String   @id @default(cuid())
+  type      String // "impression" or "conversion"
+  variant   String // "a", "b", "c", or "d"
+  url       String
+  planId    String?
+  timestamp DateTime @default(now())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+}
+
+// Subscription model
+model Subscription {
+  id              String   @id @default(cuid())
+  stripeCustomerId String   @unique
+  stripeSubscriptionId String @unique
+  status          String // "active", "canceled", "past_due", etc.
+  planId          String
+  startDate       DateTime
+  endDate         DateTime?
+  canceledAt      DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+// Variant model for A/B testing
+model Variant {
+  id           String   @id @default(cuid())
+  name         String   @unique // "a", "b", "c", "d"
+  distribution Int      @default(25) // percentage of traffic
+  title        String
+  subtitle     String
+  ctaText      String
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// Pricing tier model
+model PricingTier {
+  id         String   @id @default(cuid())
+  title      String
+  price      String
+  period     String // "month", "year"
+  features   String // Comma-separated list of features
+  ctaText    String
+  highlighted Boolean  @default(false)
+  active     Boolean  @default(true)
+  stripePriceId String @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+} 

@@ -1,0 +1,16 @@
+# These owners will be the default owners for everything in the repo
+* @yourusername
+
+# Apps
+/apps/paywall-site/ @yourusername
+/apps/api/ @yourusername
+
+# Packages
+/packages/split-engine/ @yourusername
+/packages/ui/ @yourusername
+
+# Scripts
+/scripts/ @yourusername
+
+# GitHub workflows
+/.github/ @yourusername 
